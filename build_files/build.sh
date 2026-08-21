@@ -12,8 +12,15 @@ cp -avf "/ctx/system_files"/. /
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
-# this installs a package from fedora repos
-dnf5 install -y tmux
+# Install rpm packages from known repos
+dnf5 install -y tmux ffmpeg gcc make kernel-headers kernel-devel
+
+# Build and install cxadc
+git clone https://github.com/happycube/cxadc-linux3 cxadc
+cd cxadc
+make && sudo make modules_install && sudo depmod -a
+sudo cp cxadc.rules /etc/udev/rules.d
+sudo cp cxadc.conf /etc/modprobe.d
 
 # Use a COPR Example:
 #
@@ -23,5 +30,4 @@ dnf5 install -y tmux
 # dnf5 -y copr disable ublue-os/staging
 
 #### Example for enabling a System Unit File
-
 systemctl enable podman.socket
