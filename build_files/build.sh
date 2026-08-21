@@ -20,7 +20,7 @@ git clone https://github.com/happycube/cxadc-linux3 cxadc
 cd cxadc
 make KDIR='/lib/modules/*/build'
 make KDIR='/lib/modules/*/build' modules_install
-depmod -a
+depmod $(basename /lib/modules/*)
 cp cxadc.rules /etc/udev/rules.d
 cp cxadc.conf /etc/modprobe.d
 
