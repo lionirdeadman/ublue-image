@@ -18,7 +18,9 @@ dnf5 install -y tmux ffmpeg gcc make kernel-headers kernel-devel
 # Build and install cxadc
 git clone https://github.com/happycube/cxadc-linux3 cxadc
 cd cxadc
-make -C /lib/modules/*/build && make modules_install && depmod -a
+make KDIR='/lib/modules/*/build'
+make modules_install
+depmod -a
 cp cxadc.rules /etc/udev/rules.d
 cp cxadc.conf /etc/modprobe.d
 
