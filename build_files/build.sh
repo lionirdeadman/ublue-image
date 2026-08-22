@@ -15,6 +15,7 @@ cp -avf "/ctx/system_files"/. /
 # Install rpm packages from known repos
 dnf5 install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm
 dnf5 install -y ffmpeg gcc make kernel-headers kernel-devel
+dnf5 remove -y firefox firefox-langpacks
 
 # Build and install cxadc
 git clone https://github.com/happycube/cxadc-linux3 cxadc
