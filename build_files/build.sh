@@ -13,7 +13,8 @@ cp -avf "/ctx/system_files"/. /
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # Install rpm packages from known repos
-dnf5 install -y tmux ffmpeg gcc make kernel-headers kernel-devel
+dnf5 install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm
+dnf5 install -y ffmpeg gcc make kernel-headers kernel-devel
 
 # Build and install cxadc
 git clone https://github.com/happycube/cxadc-linux3 cxadc
