@@ -17,7 +17,7 @@ dnf5 install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release
 dnf5 install -y ffmpeg gcc make kernel-headers kernel-devel
 dnf5 remove -y firefox firefox-langpacks
 
-# Build and install cxadc
+# Setup CX Cards for VHS
 git clone https://github.com/happycube/cxadc-linux3 cxadc
 cd cxadc
 make KDIR='/lib/modules/*/build'
@@ -25,6 +25,9 @@ make KDIR='/lib/modules/*/build' modules_install
 depmod $(basename /lib/modules/*)
 cp cxadc.rules /etc/udev/rules.d
 cp cxadc.conf /etc/modprobe.d
+
+# Setup DV capture
+dnf5 install -y dvgrab
 
 # Use a COPR Example:
 #
